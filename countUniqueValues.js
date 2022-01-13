@@ -9,8 +9,7 @@ countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13]) // 7
 countUniqueValues([]) // 0
 countUniqueValues([-2, -1, -1, 0, 1]) // 4
 
-You must do this with constant or 0(1) space and O(n) time.
-        
+You must do this with constant or 0(1) space and O(n) time.     
 */
 
 function countUniqueValues(anArray) {
