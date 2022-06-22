@@ -70,6 +70,29 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+
+  // retrieves a node by its position in the list
+  get(index) {
+    if (index < 0 || index >= this.length) return undefined;
+
+    let currentNode = this.head;
+
+    for (let i = 0; i < index; i++) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
+
+  // reassigns a node's value at a given position in the list
+  set(index, val) {
+    let specificNode = this.get(index);
+
+    if (specificNode) {
+      specificNode.val = val;
+      return true;
+    }
+    return false;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -77,12 +100,12 @@ list.push("TestingNode1");
 list.push("TestingNode2");
 list.push("TestingNode3");
 list.push("TestingNode4");
-list.unshift('Testing1');
-list.unshift('Testing2');
-list.unshift('Testing3');
 list.pop();
 list.pop();
 list.shift();
 list.shift();
-
-
+list.unshift("Testing1");
+list.unshift("Testing2");
+list.unshift("Testing3");
+list.get(1);
+list.get(2);
