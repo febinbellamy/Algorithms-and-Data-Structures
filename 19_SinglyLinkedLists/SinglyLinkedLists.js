@@ -120,6 +120,24 @@ class SinglyLinkedList {
     this.length--;
     return removedNode;
   }
+
+  // traverses and reverses the linked list in place
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let nextNode;
+    let prevNode = null;
+    let counter = 0;
+    while (counter < this.length) {
+      nextNode = node.next;
+      node.next = prevNode;
+      prevNode = node;
+      node = nextNode;
+      counter++;
+    }
+    return this;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -141,3 +159,4 @@ list.insert(3, "newN0DE1");
 list.insert(4, "newN0DE2");
 list.remove(3);
 list.remove(0);
+list.reverse();
