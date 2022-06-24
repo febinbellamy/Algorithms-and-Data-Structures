@@ -28,6 +28,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // removes the last node from the DLL
   pop() {
     if (!this.head) return null;
     let poppedOffTail = this.tail;
@@ -43,10 +44,29 @@ class DoublyLinkedList {
     return poppedOffTail;
   }
 
+  // removes the first node from the DLL
+  shift() {
+    if (this.length === 0) return null;
+    let formerHead = this.head;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = formerHead.next;
+      this.head.prev = null;
+      formerHead.next = null;
+    }
+    this.length--;
+    return formerHead;
+  }
+
 }
 
 let DLL = new DoublyLinkedList();
 DLL.push(53);
 DLL.push(41);
 DLL.push(22);
+DLL.push(35);
+DLL.push(16)
 DLL.pop();
+DLL.shift();
