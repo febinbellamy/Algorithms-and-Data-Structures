@@ -60,6 +60,20 @@ class DoublyLinkedList {
     return formerHead;
   }
 
+  // adds a node to the beginning of the DLL
+  unshift(val) {
+    let newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.head.prev = newNode;
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 let DLL = new DoublyLinkedList();
@@ -67,6 +81,12 @@ DLL.push(53);
 DLL.push(41);
 DLL.push(22);
 DLL.push(35);
-DLL.push(16)
+DLL.push(16);
+DLL.pop();
 DLL.pop();
 DLL.shift();
+DLL.shift();
+DLL.unshift(20);
+DLL.unshift(50);
+DLL.unshift(18);
+DLL.unshift(94);
