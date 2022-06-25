@@ -74,7 +74,44 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+
+  // accesses a node in the DLL at a specific index
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let middleOfList = Math.floor(this.length / 2);
+
+    if (index <= middleOfList) {
+      let currentNode = this.head;
+      let counter = 0;
+      while (index !== counter) {
+        currentNode = currentNode.next;
+        counter++;
+      }
+      return currentNode;
+    } else {
+      let counter = this.length - 1;
+      let currentNode = this.tail;
+      while (index !== counter) {
+        currentNode = currentNode.prev;
+        counter--;
+      }
+      return currentNode;
+    }
+  }
+
+  // updates the value of a node at a given index
+  set(index, val) {
+    let foundNode = this.get(index);
+
+    if (foundNode !== null) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
+
 }
+
 
 let DLL = new DoublyLinkedList();
 DLL.push(53);
@@ -88,5 +125,8 @@ DLL.shift();
 DLL.shift();
 DLL.unshift(20);
 DLL.unshift(50);
-DLL.unshift(18);
-DLL.unshift(94);
+DLL.get(3);
+DLL.get(1);
+DLL.set(2, 300)
+
+
