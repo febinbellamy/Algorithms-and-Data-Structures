@@ -110,7 +110,6 @@ class DoublyLinkedList {
     return false;
   }
 
-
   // inserts a node at a specific index
   insert(index, val) {
     if (index < 0 || index > this.length) return false;
@@ -130,7 +129,6 @@ class DoublyLinkedList {
     return true;
   }
 
-
 }
 
 let DLL = new DoublyLinkedList();
@@ -149,3 +147,4 @@ DLL.get(1);
 DLL.set(2, 300);
 DLL.insert(2, 30);
 DLL.insert(3, 13);
+DLL.remove(2);
