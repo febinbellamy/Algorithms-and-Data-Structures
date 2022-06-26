@@ -110,8 +110,28 @@ class DoublyLinkedList {
     return false;
   }
 
-}
 
+  // inserts a node at a specific index
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return this.unshift(val);
+    if (index === this.length) return this.push(val);
+
+    let newNode = new Node(val);
+    let lastNode = this.get(index - 1);
+    let nextNode = lastNode.next;
+
+    lastNode.next = newNode;
+    newNode.prev = lastNode;
+
+    newNode.next = nextNode;
+    nextNode.prev = newNode;
+    this.length++;
+    return true;
+  }
+
+
+}
 
 let DLL = new DoublyLinkedList();
 DLL.push(53);
@@ -123,10 +143,9 @@ DLL.pop();
 DLL.pop();
 DLL.shift();
 DLL.shift();
-DLL.unshift(20);
 DLL.unshift(50);
 DLL.get(3);
 DLL.get(1);
-DLL.set(2, 300)
-
-
+DLL.set(2, 300);
+DLL.insert(2, 30);
+DLL.insert(3, 13);
