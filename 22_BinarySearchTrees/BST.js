@@ -51,11 +51,21 @@ class BinarySearchTree {
     return false;
   }
 
-
-
+  BFS() {
+    let node = this.root;
+    let visitedNodes = [];
+    let queue = [];
+    queue.push(node);
+    while (queue.length) {
+      node = queue.shift();
+      visitedNodes.push(node.val);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    return visitedNodes;
+  }
 
 }
-
 
 let tree = new BinarySearchTree();
 tree.insert(10);
@@ -66,3 +76,4 @@ tree.insert(16);
 tree.insert(7);
 tree.find(5);
 tree.find(1);
+tree.BFS();
