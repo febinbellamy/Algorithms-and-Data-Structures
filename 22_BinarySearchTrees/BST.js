@@ -102,6 +102,9 @@ class BinarySearchTree {
     helperFunc(this.root);
     return visitedNodes;
   }
+
+  
+
 }
 
 let tree = new BinarySearchTree();
