@@ -24,6 +24,48 @@ class PriorityQueue {
     }
   }
 
+  //returns the value with the lowest priority
+  dequeue() {
+    let min = this.values[0];
+    let end = this.values.pop();
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      this.sinkDown();
+    }
+    return min;
+  }
+
+  sinkDown() {
+    let index = 0;
+    let length = this.values.length;
+    let element = this.values[0];
+    while (true) {
+      let leftChildIndex = 2 * index + 1;
+      let rightChildIndex = 2 * index + 2;
+      let leftChild;
+      let rightChild;
+      let swap = null;
+      if (leftChildIndex < length) {
+        leftChild = this.values[leftChildIndex];
+        if (leftChild.priority < element.priority) {
+          swap = leftChildIndex;
+        }
+      }
+      if (rightChildIndex < length) {
+        rightChild = this.values[rightChildIndex];
+        if (
+          (swap === null && rightChild.priority < element.priority) ||
+          (swap !== null && rightChild.priority < leftChild.priority)
+        ) {
+          swap = rightChildIndex;
+        }
+      }
+      if (swap === null) break;
+      this.values[index] = this.values[swap];
+      this.values[swap] = element;
+      index = swap;
+    }
+  }
 }
 
 class Node {
@@ -32,6 +74,7 @@ class Node {
     this.priority = priority;
   }
 }
+
 
 let EmergencyRoom = new PriorityQueue();
 EmergencyRoom.enqueue("Strep throat", 3);
