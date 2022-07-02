@@ -14,6 +14,31 @@ class HashTable {
     return total;
   }
 
+  set(key, value) {
+    let position = this._hash(key);
+    if (!this.keyMap[position]) {
+      this.keyMap[position] = [];
+    }
+    this.keyMap[position].push([key, value]);
+  }
+
+  get(key) {
+    let position = this._hash(key);
+    if (this.keyMap[position]) {
+      for (let i = 0; i < this.keyMap[position].length; i++) {
+        if (this.keyMap[position][i][0] === key) {
+          return this.keyMap[position][i][1];
+        }
+      }
+    }
+    return undefined;
+  }
 }
 
 let hashT = new HashTable(10);
+hashT.set("username1444", "Passworld4");
+hashT.set("username3544", "Passmorning4");
+hashT.set("username4000", "Passnight12");
+hashT.set("username5993", "Passbrush33");
+hashT.get("username3544");
+hashT.get("username4000");
