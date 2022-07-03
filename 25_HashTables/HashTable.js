@@ -33,6 +33,21 @@ class HashTable {
     }
     return undefined;
   }
+
+  keys() {
+    let keysArray = [];
+
+    for (let i = 0; i < this.keyMap.length; i++) {
+      if (this.keyMap[i]) {
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          if (!keysArray.includes(this.keyMap[i][j][0])) {
+            keysArray.push(this.keyMap[i][j][0]);
+          }
+        }
+      }
+    }
+    return keysArray;
+  }
 }
 
 let hashT = new HashTable(10);
@@ -42,3 +57,4 @@ hashT.set("username4000", "Passnight12");
 hashT.set("username5993", "Passbrush33");
 hashT.get("username3544");
 hashT.get("username4000");
+hashT.keys();
