@@ -70,6 +70,26 @@ class Graph {
     return result;
   }
 
+  breadthFirstGraphTraversal(startingNode) {
+    let queue = [startingNode];
+    let result = [];
+    let visitedNodes = {};
+    let currentVertex;
+    visitedNodes[startingNode] = true;
+
+    while (queue.length) {
+      currentVertex = queue.shift();
+      result.push(currentVertex);
+
+      this.adjacencyList[currentVertex].forEach((v) => {
+        if (!visitedNodes[v]) {
+          visitedNodes[v] = true;
+          queue.push(v);
+        }
+      });
+    }
+    return result;
+  }
 }
 
 let graph = new Graph();
@@ -92,3 +112,4 @@ graph.removeVertex("A");
 graph.removeVertex("D");
 graph.depthFirstGraphTraversalRecursive("A");
 graph.depthFirstGraphTraversalIterative("A");
+graph.breadthFirstGraphTraversal("A");
