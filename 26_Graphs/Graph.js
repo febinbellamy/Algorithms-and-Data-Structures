@@ -30,6 +30,25 @@ class Graph {
     }
     delete this.adjacencyList[vertex];
   }
+
+  depthFirstGraphTraversalRecursive(startingNode) {
+    let result = [];
+    let visitedNodes = {};
+
+    const helperFunc = (vertex) => {
+      if (!vertex) return null;
+      result.push(vertex);
+      visitedNodes[vertex] = true;
+      this.adjacencyList[vertex].forEach((vertex) => {
+        if (!visitedNodes[vertex]) {
+          return helperFunc(vertex);
+        }
+      });
+    };
+
+    helperFunc(startingNode);
+    return result;
+  }
 }
 
 let graph = new Graph();
@@ -50,4 +69,4 @@ graph.removeEdge("A", "B");
 graph.removeEdge("B", "C");
 graph.removeVertex("A");
 graph.removeVertex("D");
-
+graph.depthFirstGraphTraversalRecursive("A");
