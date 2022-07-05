@@ -49,6 +49,27 @@ class Graph {
     helperFunc(startingNode);
     return result;
   }
+
+  depthFirstGraphTraversalIterative(startingNode) {
+    let stack = [startingNode];
+    let visitedNodes = {};
+    let result = [];
+    let currentVertex;
+    visitedNodes[startingNode] = true;
+
+    while (stack.length) {
+      currentVertex = stack.pop();
+      result.push(currentVertex);
+      this.adjacencyList[currentVertex].forEach((v) => {
+        if (!visitedNodes[v]) {
+          visitedNodes[v] = true;
+          stack.push(v);
+        }
+      });
+    }
+    return result;
+  }
+
 }
 
 let graph = new Graph();
@@ -70,3 +91,4 @@ graph.removeEdge("B", "C");
 graph.removeVertex("A");
 graph.removeVertex("D");
 graph.depthFirstGraphTraversalRecursive("A");
+graph.depthFirstGraphTraversalIterative("A");
