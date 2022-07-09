@@ -14,7 +14,6 @@ function power(base, exponent) {
   return base * power(base, exponent - 1);
 }
 
-
 /*
 Coding Exercise 11: Factorial
 
@@ -24,13 +23,11 @@ A factorial is the product of an integer and all the integers below it; e.g., fa
 */
 
 function factorial(num) {
-  if (num === 0 || num === 1) {
+  if (num <= 1) {
     return 1;
   }
-  let result = num * factorial(num - 1);
-  return result;
+  return num * factorial(num - 1);
 }
-
 
 /*
 Coding Exercise 12: productOfArray
@@ -39,14 +36,12 @@ Write a function called product0fArray which takes in an array of numbers and re
             
 */
 
-
 function productOfArray(anArr) {
   if (anArr.length === 0) {
     return 1;
   }
   return anArr[0] * productOfArray(anArr.slice(1));
 }
-
 
 /*
 Coding Exercise 13: recursiveRange
@@ -57,11 +52,10 @@ Write a function called recursiveRange which accepts a number and adds up all th
 
 function recursiveRange(num) {
   if (num === 0) {
-    return 0;
+    return num;
   }
   return num + recursiveRange(num - 1);
 }
-
 
 /*
 Coding Exercise 14: fib
@@ -77,3 +71,11 @@ function fib(num) {
   }
   return fib(num - 1) + fib(num - 2);
 }
+
+function reverse(string) {
+  if (string.length <= 1) {
+    return string;
+  }
+  return reverse(string.slice(1) + string[0]);
+}
+
