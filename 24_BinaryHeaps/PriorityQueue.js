@@ -75,7 +75,6 @@ class Node {
   }
 }
 
-
 let EmergencyRoom = new PriorityQueue();
 EmergencyRoom.enqueue("Strep throat", 3);
 EmergencyRoom.enqueue("Flu", 2);
