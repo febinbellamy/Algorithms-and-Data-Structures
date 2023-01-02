@@ -5,8 +5,10 @@ Write a function called binarySearch which accepts a sorted array and a value an
 */
 
 function binarySearch(anArr, num) {
+  
   let leftPoint = 0;
   let rightPoint = anArr.length - 1;
+
   while (leftPoint <= rightPoint) {
     let middlePoint = Math.floor((leftPoint + rightPoint) / 2);
     let currentElem = anArr[middlePoint];
